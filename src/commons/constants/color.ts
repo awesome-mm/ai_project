@@ -2,6 +2,9 @@
  * Color foundation tokens (Figma node: 3459:1130).
  * 프로젝트 전체에서 사용되는 color 토큰.
  * 다크모드 대응: CSS 변수(--color-*)를 사용하면 테마별 값이 자동 적용됨.
+ *
+ * Figma 노드 3459:1130에서 실제 색상값을 가져온 경우,
+ * globals.css의 :root 및 @media (prefers-color-scheme: dark) 블록 내 hex 값을 해당 값으로 교체할 것.
  */
 
 /** CSS 변수 이름. globals.css의 --color-* 와 1:1 매칭 */
