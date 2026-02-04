@@ -22,6 +22,12 @@ export const COLOR_CSS_VARS = {
   border: "var(--color-border)",
   input: "var(--color-input)",
   ring: "var(--color-ring)",
+  /** 감정(emotion) 표시용 색상 토큰 */
+  red60: "var(--color-red60)",
+  blue60: "var(--color-blue60)",
+  gray60: "var(--color-gray60)",
+  yellow60: "var(--color-yellow60)",
+  green60: "var(--color-green60)",
 } as const;
 
 /** TS에서 스타일 객체 등으로 쓸 때 사용할 값 (CSS 변수 참조) */
@@ -29,3 +35,6 @@ export const COLOR = COLOR_CSS_VARS;
 
 /** CSS 변수 키만 (빌드/검증용) */
 export type ColorTokenKey = keyof typeof COLOR_CSS_VARS;
+
+/** 감정(emotion) 표시용 색상 토큰 키 - enum.ts EMOTION_DISPLAY.colorToken과 일치 */
+export type EmotionColorKey = "red60" | "blue60" | "gray60" | "yellow60" | "green60";

@@ -1,7 +1,10 @@
 /**
  * 프로젝트에서 사용하는 감정(emotion) enum 및 화면 표시용 메타 데이터.
- * 화면에서는 label, imageM/imageS, color 토큰을 사용하여 렌더링한다.
+ * 화면에서는 label, imageM/imageS, color 토큰(COLOR 상수)을 사용하여 렌더링한다.
  */
+
+import type { EmotionColorKey } from "./color";
+import { COLOR } from "./color";
 
 /** 감정 종류 */
 export enum Emotion {
@@ -20,8 +23,8 @@ export interface EmotionDisplay {
   imageM: string;
   /** 소형 이미지 파일명 (예: emotion-happy-s.png) */
   imageS: string;
-  /** 화면 표시 색상 토큰 (예: red60 → CSS 변수 또는 color 상수와 매핑 가능) */
-  colorToken: string;
+  /** 화면 표시 색상 토큰 - COLOR[colorToken]으로 CSS 변수 참조 */
+  colorToken: EmotionColorKey;
 }
 
 /** 감정별 표시 데이터 매핑 */
@@ -66,3 +69,8 @@ export const EMOTION_LIST: Emotion[] = [
   Emotion.Surprise,
   Emotion.Etc,
 ];
+
+/** 감정에 해당하는 CSS 색상 변수 값 (스타일 적용 시 사용) */
+export function getEmotionColorCssVar(emotion: Emotion): string {
+  return COLOR[EMOTION_DISPLAY[emotion].colorToken];
+}
