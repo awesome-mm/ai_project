@@ -23,6 +23,51 @@
   --color-ring: #171717;
 }
 
+/* ============================================
+   Typography foundation tokens (Figma 3459:1422)
+   프로젝트 전체 typography 토큰
+   - 한글/영문 분기 (추후 영문 값 교체 가능)
+   - 모바일/데스크톱 분기
+   ============================================ */
+
+:root {
+  /* 폰트 패밀리: 한글(기본) / 영문(추후 다른 값 사용 가능) */
+  --typography-font-family-ko: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --typography-font-family-en: var(--font-geist-sans), system-ui, sans-serif;
+
+  /* 모바일 기본: font-size / line-height / font-weight */
+  --typography-font-size-xs: 0.75rem;
+  --typography-font-size-sm: 0.875rem;
+  --typography-font-size-base: 1rem;
+  --typography-font-size-md: 1.125rem;
+  --typography-font-size-lg: 1.25rem;
+  --typography-font-size-xl: 1.5rem;
+  --typography-font-size-2xl: 1.875rem;
+  --typography-font-size-3xl: 2.25rem;
+  --typography-line-height-tight: 1.25;
+  --typography-line-height-normal: 1.5;
+  --typography-line-height-relaxed: 1.625;
+  --typography-line-height-loose: 2;
+  --typography-font-weight-normal: 400;
+  --typography-font-weight-medium: 500;
+  --typography-font-weight-semibold: 600;
+  --typography-font-weight-bold: 700;
+}
+
+/* 데스크톱 분기: 필요 시 스케일만 다르게 적용 */
+@media (min-width: 1024px) {
+  :root {
+    --typography-font-size-xs: 0.75rem;
+    --typography-font-size-sm: 0.875rem;
+    --typography-font-size-base: 1rem;
+    --typography-font-size-md: 1.25rem;
+    --typography-font-size-lg: 1.5rem;
+    --typography-font-size-xl: 1.875rem;
+    --typography-font-size-2xl: 2.25rem;
+    --typography-font-size-3xl: 3rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -59,10 +104,32 @@
   --color-ring: var(--color-ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* typography 토큰 (CSS/Tailwind에서 사용) */
+  --typography-font-family-ko: var(--typography-font-family-ko);
+  --typography-font-family-en: var(--typography-font-family-en);
+  --typography-font-size-xs: var(--typography-font-size-xs);
+  --typography-font-size-sm: var(--typography-font-size-sm);
+  --typography-font-size-base: var(--typography-font-size-base);
+  --typography-font-size-md: var(--typography-font-size-md);
+  --typography-font-size-lg: var(--typography-font-size-lg);
+  --typography-font-size-xl: var(--typography-font-size-xl);
+  --typography-font-size-2xl: var(--typography-font-size-2xl);
+  --typography-font-size-3xl: var(--typography-font-size-3xl);
+  --typography-line-height-tight: var(--typography-line-height-tight);
+  --typography-line-height-normal: var(--typography-line-height-normal);
+  --typography-line-height-relaxed: var(--typography-line-height-relaxed);
+  --typography-line-height-loose: var(--typography-line-height-loose);
+  --typography-font-weight-normal: var(--typography-font-weight-normal);
+  --typography-font-weight-medium: var(--typography-font-weight-medium);
+  --typography-font-weight-semibold: var(--typography-font-weight-semibold);
+  --typography-font-weight-bold: var(--typography-font-weight-bold);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--typography-font-family-ko);
+  font-size: var(--typography-font-size-base);
+  line-height: var(--typography-line-height-normal);
+  font-weight: var(--typography-font-weight-normal);
 }
