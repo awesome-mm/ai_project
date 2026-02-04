@@ -1,34 +1,86 @@
 {
+  // TypeScript 컴파일러 설정
   "compilerOptions": {
+    // 컴파일 대상 JavaScript 버전
     "target": "ES2017",
+
+    // 사용할 타입 정의 라이브러리
     "lib": ["dom", "dom.iterable", "esnext"],
+
+    // JavaScript 파일 허용 (TypeScript와 JavaScript 혼용 가능)
     "allowJs": true,
+
+    // 라이브러리 타입 체크 건너뛰기 (성능 향상 및 타입 충돌 방지)
+    // Next.js validator.ts의 ResolvingMetadata 타입 에러 방지에 도움
     "skipLibCheck": true,
+
+    // 엄격한 타입 체크 활성화
     "strict": true,
+
+    // JavaScript 파일 출력 비활성화 (Next.js가 빌드 처리)
     "noEmit": true,
+
+    // ES 모듈 상호 운용성 활성화
     "esModuleInterop": true,
+
+    // 합성 기본 import 허용 (모듈 해석 개선)
+    "allowSyntheticDefaultImports": true,
+
+    // 모듈 시스템 설정
     "module": "esnext",
+
+    // 모듈 해석 방식 (Next.js bundler와 호환)
+    // validator.ts의 .js 확장자 import 해석 지원
     "moduleResolution": "bundler",
+
+    // JSON 파일을 모듈로 import 가능하게 설정
     "resolveJsonModule": true,
+
+    // 각 파일을 독립적으로 컴파일 (성능 향상)
     "isolatedModules": true,
+
+    // JSX 변환 방식 (React 17+ 자동 변환)
     "jsx": "react-jsx",
+
+    // 증분 컴파일 활성화 (빌드 성능 향상)
     "incremental": true,
+
+    // TypeScript 플러그인 설정
     "plugins": [
       {
+        // Next.js 타입 플러그인
         "name": "next"
       }
     ],
+
+    // 경로 별칭 설정 (@/로 src/ 디렉토리 접근)
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    // 타입 선언 파일을 찾을 위치
+    // Next.js 타입 정의를 포함하여 validator.ts의 타입 에러 방지
+    "typeRoots": ["./node_modules/@types"],
+
+    // 추가로 포함할 타입 정의
+    "types": ["node"]
   },
+
+  // 컴파일에 포함할 파일/디렉토리
   "include": [
+    // Next.js 환경 타입 정의
     "next-env.d.ts",
+    // 모든 TypeScript 파일
     "**/*.ts",
+    // 모든 TypeScript React 파일
     "**/*.tsx",
+    // Next.js 생성 타입 파일 (validator.ts 포함)
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
+    // 모든 .mts 파일
     "**/*.mts"
   ],
+
+  // 컴파일에서 제외할 디렉토리
   "exclude": ["node_modules"]
 }
